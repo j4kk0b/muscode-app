@@ -348,8 +348,13 @@ h2 {
   z-index: 10;
 
   width: 60rem;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #fff;
+
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-title {
@@ -391,6 +396,13 @@ h2 {
   list-style: none;
 }
 
+.modal-menu {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .modal-menu__list-item {
   display: flex;
   flex-direction: column;
@@ -417,14 +429,14 @@ h2 {
 }
 
 .modal-menu__buttons {
-  position: absolute;
   width: 100%;
-
-  bottom: 0;
-  left: 0;
+  position: relative;
 
   padding: 1.6rem;
 
+  justify-self: end;
+  align-self: end;
+  margin-top: 10rem;
   border-top: 1px solid var(--border-color-default);
 }
 

@@ -1,0 +1,529 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+:root {
+  --border-color-default: #b2b2b2;
+  --purple-color-default: #862583;
+  --gray-color-default: #f5f8fa;
+  --font-color-default: #384a5c;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-size: 1.4rem;
+  color: var(--font-color-default);
+  background-color: var(--gray-color-default);
+}
+
+h2 {
+  color: #333;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+/* ========================== */
+/* == SETTINGS OF CHECKBOX == */
+/* ========================== */
+.todo-list__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.todo-list__item input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+
+  margin: 1px 20px 1px -10px;
+}
+
+.checkmark {
+  height: 1.6rem;
+  width: 1.6rem;
+  border: 1px solid var(--border-color-default);
+  border-radius: 50%;
+
+  position: relative;
+}
+
+.todo-list__item:hover input ~ .checkmark {
+  background-color: #cccccc48;
+}
+
+.todo-list__item input:checked ~ .checkmark {
+  background-color: var(--purple-color-default);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.todo-list__item input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.todo-list__item .checkmark:after {
+  top: 1px;
+  left: 5px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+/* ==================== */
+/* == HELPER CLASSES == */
+/* ==================== */
+
+.block-default {
+  /* border: 1px solid #b2b2b2; */
+  box-shadow: 0 0 0.7rem var(--border-color-default);
+  background-color: #fff;
+  border-radius: 1rem;
+
+  height: 33rem;
+  overflow-y: scroll;
+}
+
+.container {
+  max-width: 118rem;
+  margin: 0 auto;
+
+  display: grid;
+  place-content: center;
+
+  min-height: 100vh;
+}
+
+.container h1 {
+  top: 6rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 500;
+}
+
+.lists,
+.products {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1.5rem;
+}
+
+/* =============== */
+/* == TODO LIST == */
+/* =============== */
+
+.todo-list {
+  padding: 2rem;
+
+  grid-column: span 3;
+}
+
+.todo-list__item {
+  position: relative;
+}
+
+.todo-list__item-title {
+  width: 70%;
+  word-wrap: break-word;
+}
+
+.todo-list__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-list__container {
+  list-style: none;
+  margin-top: 1.5rem;
+}
+
+.todo-list__add-new-element {
+  border: none;
+  width: 100%;
+  padding: 0.8rem 0.8rem 0.8rem 1.3rem;
+  outline: none;
+}
+
+.todo-list__container li,
+.todo-list__add-new-element {
+  border-bottom: 1px solid var(--border-color-default);
+}
+
+.todo-list__container li {
+  padding: 0.6rem;
+}
+
+.todo-list__add-new-element::placeholder::first-letter {
+  font-size: 1.6rem;
+}
+
+.todo-done .todo-list__item-title {
+  text-decoration: line-through;
+}
+
+.todo-list__item-delete__button {
+  display: none;
+  font-size: 10px;
+}
+
+.todo-done .todo-list__item-delete__button {
+  color: red;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 20%;
+  text-align: center;
+
+  display: grid;
+  place-content: center;
+
+  transition: 0.2s ease;
+  z-index: 150;
+  cursor: pointer;
+}
+
+.todo-done .todo-list__item-delete__button:hover {
+  letter-spacing: 3px;
+}
+
+/* ====================== */
+/* == LIST OF PRODUCTS == */
+/* ====================== */
+
+.list-of-products {
+  padding: 2rem;
+
+  grid-column: span 6;
+}
+
+.list-of-products__table {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.list-of-products__table thead tr th {
+  font-weight: 500;
+}
+
+.list-of-products__table tr {
+  border-bottom: 1px solid var(--border-color-default);
+  transition: 0.2s ease;
+}
+
+.list-of-products__table tbody tr:hover {
+  background-color: var(--gray-color-default);
+}
+
+.list-of-products__table tr td,
+.list-of-products__table thead tr th {
+  padding: 0.5rem 0;
+}
+
+.list-of-products__table tr td:first-child,
+.list-of-products__table tr th:first-child {
+  width: 10%;
+  padding-left: 1rem;
+}
+
+.list-of-products__table tr td:nth-child(2),
+.list-of-products__table tr th:nth-child(2) {
+  width: 40%;
+}
+
+.list-of-products__table tr td:nth-child(3),
+.list-of-products__table tr th:nth-child(3) {
+  width: 25%;
+}
+
+.list-of-products__table tr td:nth-child(4),
+.list-of-products__table tr th:nth-child(4) {
+  width: 15%;
+}
+
+/* ===================== */
+/* == PRODUCTS TO BUY == */
+/* ===================== */
+
+.products-to-buy {
+  margin-top: 1.5rem;
+}
+
+.product-to-buy {
+  position: relative;
+  padding: 2rem;
+  overflow: hidden;
+
+  grid-column: span 3;
+}
+
+.product-to-buy__discount {
+  position: absolute;
+  background-color: #000;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.3rem;
+  width: 20rem;
+  top: 1.5rem;
+  right: -5.5rem;
+  transform: rotate(45deg);
+}
+
+.product-to-buy div {
+  display: grid;
+  place-content: center;
+
+  margin: 2rem 0;
+}
+
+.product-to-buy__image {
+  height: 20rem;
+  width: auto;
+}
+
+.product-to-buy__price {
+  font-size: 1.4rem;
+  color: var(--purple-color-default);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.product-to-buy__price-prev {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  text-decoration: line-through;
+}
+
+/* =========== */
+/* == MODAL == */
+/* =========== */
+
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.modal-closed {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+
+  width: 60rem;
+  height: 100%;
+  background-color: #fff;
+}
+
+.modal-title {
+  font-size: 2rem;
+  border-bottom: 3px solid var(--purple-color-default);
+  width: 100%;
+  padding: 1.6rem;
+}
+
+.modal-image {
+  margin: 3rem 0;
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.modal-image-circle {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 0.4rem var(--border-color-default);
+
+  display: grid;
+  place-content: center;
+}
+
+.modal-image .modal-image-circle img {
+  width: 15rem;
+  height: auto;
+}
+
+.modal-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.6rem;
+
+  list-style: none;
+}
+
+.modal-menu__list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.modal-menu__list-item label {
+  opacity: 0.8;
+  font-size: 1.4rem;
+  margin-left: 0.5rem;
+}
+
+.modal-menu__list .modal-menu__list-item input,
+.modal-menu__list .modal-menu__list-item select {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-bottom: 0.2rem;
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color-default);
+}
+
+.modal-menu__buttons {
+  position: absolute;
+  width: 100%;
+
+  bottom: 0;
+  left: 0;
+
+  padding: 1.6rem;
+
+  border-top: 1px solid var(--border-color-default);
+}
+
+.modal-menu__buttons button {
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border-color-default);
+
+  cursor: pointer;
+}
+
+.modal-menu__buttons button:first-of-type {
+  background-color: var(--purple-color-default);
+  color: var(--gray-color-default);
+}
+
+/* 1100px */
+@media only screen and (max-width: 75em) {
+  /* ==================== */
+  /* == HELPER CLASSES == */
+  /* ==================== */
+
+  .container {
+    min-height: 100vh;
+    margin: 5rem 2rem 0 2rem;
+
+    display: grid;
+    place-content: center;
+  }
+
+  .container h1 {
+    top: 1rem;
+  }
+
+  .lists {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 1.5rem;
+  }
+
+  .products {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .product-to-buy {
+    width: 35rem;
+  }
+}
+
+/* 960px */
+@media only screen and (max-width: 60em) {
+  /* ==================== */
+  /* == HELPER CLASSES == */
+  /* ==================== */
+
+  .lists {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .lists > div {
+    width: 100%;
+  }
+
+  /* =============== */
+  /* == TODO LIST == */
+  /* =============== */
+
+  .todo-list__item-title {
+    width: 45rem;
+    word-wrap: break-word;
+  }
+}
+
+/* 780px */
+@media only screen and (max-width: 48.75em) {
+  .product-to-buy {
+    width: 100%;
+  }
+}
+
+/* 700px */
+@media only screen and (max-width: 43.75em) {
+  html {
+    font-size: 40%;
+  }
+
+  .todo-list__item .checkmark:after {
+    top: -2px;
+    left: 2px;
+  }
+}
+
+/* 460px */
+@media only screen and (max-width: 30em) {
+  .todo-list__item-title {
+    max-width: 35rem;
+    word-wrap: break-word;
+  }
+}

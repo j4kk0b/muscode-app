@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="/js/productManager.js"></script>
+    <script defer src="/js/todoManager.js"></script>
+
+    <title>Muscode App</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Muscode App</h1>
+      <section class="lists">
+        <div class="todo-list block-default">
+          <div class="todo-list__header">
+            <h2>Lista todo</h2>
+            <h2>Wykonane: <span class="todo-list__counter"></span></h2>
+          </div>
+
+          <ul class="todo-list__container"></ul>
+
+          <form class="todo-list__form">
+            <input
+              class="todo-list__add-new-element"
+              type="text"
+              placeholder="+   Dodaj nowy element checklisty"
+            />
+          </form>
+        </div>
+
+        <div class="list-of-products block-default">
+          <h2>Lista Produktów</h2>
+          <table class="list-of-products__table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">NAZWA</th>
+                <th scope="col">PROMOCYJNA CENA</th>
+                <th scope="col">CENA</th>
+                <th scope="col">WALUTA</th>
+              </tr>
+            </thead>
+
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="products products-to-buy">
+        <div data-product-to-buy="0" class="product-to-buy block-default">
+          <h2 class="product-to-buy__title">iPhone 6s Plus 16GB</h2>
+          <div>
+            <img
+              class="product-to-buy__image"
+              src="src/img1.png"
+              alt="iPhone 6s Plus 16GB"
+            />
+            <p class="product-to-buy__price">
+              1000 <span class="product-to-buy__curr">$</span>
+            </p>
+          </div>
+        </div>
+
+        <div data-product-to-buy="1" class="product-to-buy block-default">
+          <h2 class="product-to-buy__title">iPad Pro 32GB</h2>
+          <div>
+            <img
+              class="product-to-buy__image"
+              src="src/img2.png"
+              alt="iPad Pro 32GB"
+            />
+            <p class="product-to-buy__price">
+              800 <span class="product-to-buy__curr">$</span>
+            </p>
+          </div>
+        </div>
+
+        <div data-product-to-buy="2" class="product-to-buy block-default">
+          <h2 class="product-to-buy__title">MacBook Pro</h2>
+          <div>
+            <img
+              class="product-to-buy__image"
+              src="src/img3.png"
+              alt="MacBook Pro"
+            />
+            <p class="product-to-buy__price">
+              8000 <span class="product-to-buy__curr">PLN</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

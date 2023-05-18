@@ -348,7 +348,7 @@ h2 {
   z-index: 10;
 
   width: 60rem;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #fff;
 }
 
